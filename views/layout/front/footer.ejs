@@ -267,6 +267,9 @@
             cacheProvider: false, // optional
             providerOptions, // required
         });
+
+        
+
     }
    /* async function fetchAccountData() {
             // Get a Web3 instance for the wallet
@@ -357,6 +360,7 @@
     
     */
     async function onLogin(){
+      $('#loginModal').modal('hide');
        let account_address="";
         console.log("Opening a dialog", web3Modal);
         try {
