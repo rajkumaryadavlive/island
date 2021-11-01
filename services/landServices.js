@@ -62,6 +62,14 @@ const addImages=async(LandImage)=>{
          return images;
      }catch(e){ console.log(e); }
   }
+
+ const findImagebyId=async(id)=>{
+     try{
+       let images=await LandImageInfo.find({'land_id':id});
+       return  images;
+     }catch(e){console.log(e);}
+ } 
+
   const updateImages=async(imageObj,id)=>{
     try{
        
@@ -77,6 +85,7 @@ const addImages=async(LandImage)=>{
         return data;
     }catch(e){ console.log(e); }
  }
+
  const findAllLand=async()=>{
     try{
        
@@ -84,7 +93,7 @@ const addImages=async(LandImage)=>{
         return data;
     }catch(e){ console.log(e); }
  }
- const findImageByID=async(id)=>{
+ const findImagesByID=async(id)=>{
     try{
         return new Promise( async function (resolve, reject) {
         let data = await LandImageInfo.findOne({'land_id':id});
@@ -94,4 +103,13 @@ const addImages=async(LandImage)=>{
         })
     }catch(e){ console.log(e); }
  }
-module.exports={findLand,addLand,editLand,findLandById,addImages,updateImages,deleteLandById,findAllLand,findImageByID}
+
+module.exports={findLand,
+                addLand,
+                editLand,
+                findLandById,
+                addImages,
+                updateImages,
+                deleteLandById,
+                findImagebyId,findAllLand,findImagesByID}
+

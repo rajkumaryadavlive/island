@@ -56,7 +56,7 @@ const market=async (req,res)=>{
      for(var key of landData){
          var temp = JSON.stringify(key);
          var temp1 = JSON.parse(temp);
-         let imageInfos = await landServices.findImageByID(key._id)
+         let imageInfos = await landServices.findImagesByID(key._id)
          temp1.imageInfo = imageInfos
          data.push(temp1)
      }
