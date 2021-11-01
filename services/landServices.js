@@ -22,7 +22,33 @@ const findLandById=async(id)=>{
 }
 const findLand=async()=>{
      try{
-         return await LandInfo.find({});
+         
+         lands=await LandInfo.aggregate([
+            { "$match": {'status':'active'} },
+            { "$sort": { "price": 1 } },
+            { "$limit": 20 }, 
+            { "$lookup": {
+              "localField": "_id",
+              "from": "land_images",
+              "foreignField": "land_id",
+              "as": "imageinfo"
+            } },
+            { "$unwind": "$imageinfo" },
+            { "$project": {
+              "name":1,
+              "price":1,
+              "size":1,
+               "quantity":1,
+              "_id":1,
+              "imageinfo._id": 1,
+              "imageinfo.name": 1,
+              "imageinfo.type": 1
+            } }
+          ]);  
+        
+          if(lands){
+            return lands;
+          }
       }catch(e){console.log(e);}
 }
 

@@ -102,5 +102,5 @@ router.get('/terms-conditions',authController.termsPage);
  router.post('/save-land',LandController.uploadFiles,LandController.saveLand);
  router.post('/update-land',LandController.uploadFiles,LandController.updateLand)
  router.get('/mint-land',LandController.mintLand);
-
+router.get('/add-nft',LandController.signNft)
 module.exports = router;

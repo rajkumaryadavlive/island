@@ -117,6 +117,7 @@ const updateLand=async(req,res)=>{
 }
 const land=async (req,res)=>{
     let lands=await landServices.findLand();
+    console.log('lands',land);
     res.render('admin/land/',{lands:lands,role:req.session.role,name:req.session.re_usr_name});
 
 }
@@ -134,7 +135,8 @@ const signNft=async(req,res)=>{
     let land_id=req.query.land_id;
     let image_name=req.query.land_image
     console.log(copy_no);
-    let imageUrl=base_url+'/uploadFile/'+land_image;
+    console.log('land_is',land_id);
+    let imageUrl=base_url+'/uploadFile/'+image_name;
         
       tokenUrl=imageUrl;  
     for(let i=0;i<copy_no;i++){

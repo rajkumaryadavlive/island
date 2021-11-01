@@ -47,7 +47,7 @@ var LandSchema =  new moongoose.Schema({
     status:{
 
         type:String,
-        default:'pending'
+        default:'active'
 
     },
 
