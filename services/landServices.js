@@ -28,9 +28,9 @@ const findLand=async()=>{
             { "$sort": { "price": 1 } },
             { "$limit": 20 }, 
             { "$lookup": {
-              "localField": "_id",
+              "localField": "land_id",
               "from": "land_images",
-              "foreignField": "land_id",
+              "foreignField": "_id",
               "as": "imageinfo"
             } },
             { "$unwind": "$imageinfo" },
@@ -38,7 +38,7 @@ const findLand=async()=>{
               "name":1,
               "price":1,
               "size":1,
-               "quantity":1,
+              "quantity":1,
               "_id":1,
               "imageinfo._id": 1,
               "imageinfo.name": 1,
@@ -52,7 +52,7 @@ const findLand=async()=>{
       }catch(e){console.log(e);}
 }
 
-const addImages=async(id,LandImage)=>{
+const addImages=async(LandImage)=>{
      try{
          let images=new LandImageInfo(LandImage)
          await images.save();

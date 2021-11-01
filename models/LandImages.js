@@ -8,7 +8,7 @@ const bcrypt = require('bcryptjs');
 
 var LandImageSchema =  new moongoose.Schema({
 
-   land_id:[{ type: moongoose.Schema.Types.ObjectId, ref: 'users' }],
+   land_id:[{ type: moongoose.Schema.Types.ObjectId, ref: 'lands' }],
     name:{
         type: String
     },

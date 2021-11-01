@@ -67,6 +67,7 @@ const saveLand=async(req,res)=>{
     
      console.log(media_type);
      let imageObj={land_id:landDetail._id,name:file.filename,type:media_type}
+     console.log('images fata',imageObj)
      let content_media=await landServices.addImages(imageObj);
      console.log(content_media);
    });
