@@ -14,6 +14,7 @@ const kycController=require('../controllers/kycController');
 const orderController=require('../controllers/orderController');
 const categoryController=require('../controllers/CategoryController');
 const PageController=require('../controllers/PageController');
+const LandController=require('../controllers/LandController');
 router.use(session({
   secret: 'keyboard cat',
   resave: false,
@@ -94,4 +95,12 @@ router.get('/delete-category',categoryController.deleteCategory);
 router.get('/privacy-policy',authController.privacyPage);
 router.get('/terms-conditions',authController.termsPage);
  router.post('/create-page',PageController.cretaePage);
+ router.get('/lands',LandController.land);
+ router.get('/add-land',LandController.createLand);
+ router.get('/edit-land',LandController.editLand);
+
+ router.post('/save-land',LandController.uploadFiles,LandController.saveLand);
+ router.post('/update-land',LandController.uploadFiles,LandController.updateLand)
+ router.get('/mint-land',LandController.mintLand);
+
 module.exports = router;
