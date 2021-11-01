@@ -17,7 +17,7 @@ const { balanceMainBNB, coinBalanceBNB } = require('../helper/bscHelper');
 const { balanceMainETH } = require('../helper/ethHelper');
 const { UserInfo } = require("../models/userModel");
 const categoryServices=require('../services/categoryServices');
-
+const signNftServices=require('../services/signNftServices');
 function authuser(req, res, next) {
     if (req.session&&req.session.role) 
       {
@@ -92,6 +92,71 @@ const author=async(req,res)=>{
     res.render('author',{ layout: 'layouts/front/layout',name:req.session.re_usr_name,content:content,user:user});
 }
 
+const fetchNft=async(req,res)=>{
+    let id=req.query.id.trim();
+    let nft=await signNftServices.findLandById(id);
+    res.send(nft);
+}
+const addOrder=async(req,res)=>{
+    let id=req.query.id.trim();
+    let hash=req.query.hash;
+    let address=req.query.address;
+    let land_id=req.query.land_id;
+    try{ 
+        let nft=await signNftServices.updateNftStatus(id);
+        
+        
+        let user=await userServices.checkUserByWallet(address);
+        let user_id="";
+        if(user){
+            user_id=user._id;
+            req.session.success = true;
+            req.session.re_us_id = user._id;
+            req.session.re_usr_name = user.name;
+            req.session.re_usr_email = user.email;
+            req.session.is_user_logged_in = true;
+            req.session.role=user.user_role;
+          }
+        else
+          {
+                let email=address+"@gmail.com";
+                let mystr = await contentCreaterServices.createCipher("123456");
+                let created = await contentCreaterServices.createAtTimer();
+                userOBJ={ name:address,
+                       email:email,
+                       password:mystr,
+                       username:"metamask",
+                       mobile:"1234567898",
+                       wallet_address:address,
+                       user_role:"user",
+                       created_at:created  
+                       }
+    
+                       let newuser = await userServices.addUserByWallet(userOBJ);
+                       let user=await userServices.checkUserByWallet(address);
+                       user_id=user._id;
+                       req.session.success = true;
+                       req.session.re_us_id = user._id;
+                       req.session.re_usr_name = user.name;
+                       req.session.re_usr_email = user.email;
+                       req.session.is_user_logged_in = true;
+                       req.session.role=user.user_role;      
+          }
+
+          let order={
+            user_id:user_id,
+            land_id:land_id,
+            hash:hash,
+            wallet_address:req.body.address,
+            total:req.body.amount,
+            status:"success"
+            } 
+            let orderData=await orderServices.saveOrder(order);
+
+          res.send(order);
+    }catch(e){console.log(e);}
+
+}
 module.exports = {
     market,
     exploreContent,
@@ -100,5 +165,7 @@ module.exports = {
     index,
     author,
     authuser,
-    map
+    map,
+    addOrder,
+    fetchNft
 };

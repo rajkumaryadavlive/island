@@ -143,6 +143,12 @@ const totalEarning=async(user_id)=>{
   });
    return earning;
  }
+
+ const updateNftHash=async(id,hash)=>{
+  let order=await OrderInfo.updateOne({'trans_id':id}, { $set: {nft_hash:hash} });
+}
+
+
 module.exports = {
   saveOrder,
   getOrders,

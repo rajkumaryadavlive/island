@@ -55,6 +55,16 @@
           </div>
        </div>
      </div>
+     <form>
+         <input type="hidden"name="token_id" id="token_id" value="">
+         <input type="hidden"name="min_price" id="min_price" value="">
+         <input type="hidden"name="token_url" id="token_url" value="">
+         <input type="hidden"name="signature"id="signature"value="">
+         <input type="hidden"name="land_id"id="land_id"value="">
+         <input type="hidden"name="nft_id"id="nft_id"value="">
+
+
+     </form>
    </footer>
    
    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
@@ -634,3 +644,123 @@
     }
     
     </script>
+
+<script src="/javascripts/js/wallet.js"></script>
+
+<script type="module">
+  import { ethers } from "/javascripts/ether.js";
+
+
+let contractAddress="0xc3B47d850D0fD72dE0C2009EfCdC64b418394978";
+const abi=[{"inputs":[{"internalType":"address payable","name":"minter","type":"address"}],"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":true,"internalType":"address","name":"approved","type":"address"},{"indexed":true,"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"Approval","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":true,"internalType":"address","name":"operator","type":"address"},{"indexed":false,"internalType":"bool","name":"approved","type":"bool"}],"name":"ApprovalForAll","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes32","name":"role","type":"bytes32"},{"indexed":true,"internalType":"bytes32","name":"previousAdminRole","type":"bytes32"},{"indexed":true,"internalType":"bytes32","name":"newAdminRole","type":"bytes32"}],"name":"RoleAdminChanged","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes32","name":"role","type":"bytes32"},{"indexed":true,"internalType":"address","name":"account","type":"address"},{"indexed":true,"internalType":"address","name":"sender","type":"address"}],"name":"RoleGranted","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes32","name":"role","type":"bytes32"},{"indexed":true,"internalType":"address","name":"account","type":"address"},{"indexed":true,"internalType":"address","name":"sender","type":"address"}],"name":"RoleRevoked","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"from","type":"address"},{"indexed":true,"internalType":"address","name":"to","type":"address"},{"indexed":true,"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"Transfer","type":"event"},{"inputs":[],"name":"DEFAULT_ADMIN_ROLE","outputs":[{"internalType":"bytes32","name":"","type":"bytes32"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"MINTER_ROLE","outputs":[{"internalType":"bytes32","name":"","type":"bytes32"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"approve","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"availableToWithdraw","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"owner","type":"address"}],"name":"balanceOf","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"getApproved","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"getChainID","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"bytes32","name":"role","type":"bytes32"}],"name":"getRoleAdmin","outputs":[{"internalType":"bytes32","name":"","type":"bytes32"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"account","type":"address"}],"name":"grantMinter","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"role","type":"bytes32"},{"internalType":"address","name":"account","type":"address"}],"name":"grantRole","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"role","type":"bytes32"},{"internalType":"address","name":"account","type":"address"}],"name":"hasRole","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"owner","type":"address"},{"internalType":"address","name":"operator","type":"address"}],"name":"isApprovedForAll","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"name","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"ownerOf","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"redeemer","type":"address"},{"components":[{"internalType":"uint256","name":"tokenId","type":"uint256"},{"internalType":"uint256","name":"minPrice","type":"uint256"},{"internalType":"string","name":"uri","type":"string"},{"internalType":"bytes","name":"signature","type":"bytes"}],"internalType":"struct Taboo.NFTVoucher","name":"voucher","type":"tuple"}],"name":"redeem","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"payable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"role","type":"bytes32"},{"internalType":"address","name":"account","type":"address"}],"name":"renounceRole","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"role","type":"bytes32"},{"internalType":"address","name":"account","type":"address"}],"name":"revokeRole","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"from","type":"address"},{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"safeTransferFrom","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"from","type":"address"},{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"},{"internalType":"bytes","name":"_data","type":"bytes"}],"name":"safeTransferFrom","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"operator","type":"address"},{"internalType":"bool","name":"approved","type":"bool"}],"name":"setApprovalForAll","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes4","name":"interfaceId","type":"bytes4"}],"name":"supportsInterface","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"symbol","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"tokenURI","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"from","type":"address"},{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"transferFrom","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"withdraw","outputs":[],"stateMutability":"nonpayable","type":"function"}];
+const provider = new ethers.providers.Web3Provider(window.ethereum)
+console.log(provider.getSigner());
+//const contract = new ethers.Contract(contractAddress,abi2, provider);
+//console.log(contract.getChainID())
+const signer = provider.getSigner();
+console.log(signer.getAddress())
+
+if (window.ethereum) {  window.ethereum.enable().then(accounts => {   
+   console.log('ready to go!') 
+   startRedeem();
+ }).catch(reason => {  
+     alert('conntect to wallet');  
+       // Handle error. Likely the user rejected the login. 
+});}
+else 
+{  
+    alert("The user doesn't have Metamask installed."); // The user doesn't have Metamask installed.
+}
+
+async function startRedeem(){
+
+    let tokenId=document.getElementById('token_id').value;
+    let uri=document.getElementById('token_url').value;
+    let minPrice=document.getElementById('min_price').value;
+    let signature=document.getElementById('signature').value;
+    let nft_id=document.getElementById('nft_id').value;
+    const voucherObj={
+        tokenId:tokenId,
+        uri:uri,
+        minPrice:0,
+        signature:signature
+    };
+
+    await redeemData(voucherObj,nft_id)
+}
+
+async function redeemData(voucher,nft_id){
+    const redeemer = provider.getSigner();
+    let raddress=await redeemer.getAddress();//'0x3246258362e662AE3b482A7e685A955445e9Ed47';//redeemer.getAddress();
+    console.log(raddress);
+    const redeemerContract = new ethers.Contract(contractAddress,abi,redeemer);
+    /*try{
+        let minter= await redeemerContract.grantMinter(raddress);
+        console.log(minter)
+      }
+      catch(err){
+          console.log(err);
+      } */
+    let minPrice=0;
+   //const minPrice =""; //ethers.constants.WeiPerEther // charge 1 Eth
+    //let amount= '0x' + ((minPrice*1000000000000000000).toString(16))
+
+    console.log("new voucher",voucher);
+      try{
+        let hash= await  redeemerContract.redeem(raddress,voucher);
+         
+        // document.getElementById('trx').innerText="Transaction Hash: "+hash.hash;
+         console.log(hash);
+
+          
+         $.ajax({type:"GET",
+         url:"/sale-nft",
+         data:{id:nft_id,hash:hash},
+         success:function(res){
+              
+                     swal({
+                              type: 'success',
+                               text: 'Transaction completed successfully.',
+                               timer: 3000,
+                               onOpen: function() {
+                                 swal.showLoading()
+                             }
+                         }).then(function() {
+                            window.location.href="/";
+
+                        });
+         }
+           
+        
+        });
+
+        }catch(err){
+          console.log(err);
+      }
+    
+    }
+
+
+   
+     function buyLand(id){
+         $.ajax({
+                type:'get',
+                url:'/users/land-nft',
+                data:{id:id},
+                success:function(res){
+
+                  document.getElementById('token_id').value=res.nft.token_id;  
+                  document.getElementById('min_price').value=res.nft.min_price;
+                  document.getElementById('token_url').value=res.nft.token_url;
+                  document.getElementById('signature').value=res.nft.signature;
+                  document.getAnimations('nft_id').value=res.nft._id;  
+                  document.getAnimations('land_id').value=id;  
+
+                  startRedeem();
+               }
+         })
+     }   
+       
+       
+   
+</script>

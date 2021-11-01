@@ -15,7 +15,7 @@ const addVoucher=async(nftData)=>{
 
 const findByIdVoucher=async(id)=>{
         try{
-            let voucher=await SignNftInfo.findOne({content_id:id,status:0});
+            let voucher=await SignNftInfo.findOne({land_id:id,status:0});
            return voucher;
         }catch(e){console.log(e)}
 }
