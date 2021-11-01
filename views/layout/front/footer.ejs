@@ -746,7 +746,7 @@ async function redeemData(voucher,nft_id){
 function buyLand(id){
          $.ajax({
                 type:'get',
-                url:'/users/land-nft',
+                url:'/land-nft',
                 data:{id:id},
                 success:function(res){
 
@@ -762,6 +762,10 @@ function buyLand(id){
          });
      }   
        
-       
+    $('.buynow').click(function(e){
+        e.preventDefault()
+        var id =this.getAttribute('value')
+        buyLand(id)
+    })   
    
 </script>

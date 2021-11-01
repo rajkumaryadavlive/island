@@ -58,7 +58,7 @@ const saveLand=async(req,res)=>{
 
    let  landDetail=await landServices.addLand(landObj);   
    console.log(landDetail);
-   req.session.land=land;  
+   req.session.land=landDetail;  
    req.session.land_image= req.files[0].filename;
    console.log('files',files);
    files.forEach( async function(file,index)

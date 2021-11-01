@@ -95,7 +95,7 @@ const author=async(req,res)=>{
 const fetchNft=async(req,res)=>{
     let id=req.query.id.trim();
     let nft=await signNftServices.findLandById(id);
-    res.send(nft);
+    res.send(nft[0]);
 }
 const addOrder=async(req,res)=>{
     let id=req.query.id.trim();
