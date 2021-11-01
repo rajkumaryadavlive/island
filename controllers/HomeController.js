@@ -18,6 +18,7 @@ const { balanceMainETH } = require('../helper/ethHelper');
 const { UserInfo } = require("../models/userModel");
 const categoryServices=require('../services/categoryServices');
 const signNftServices=require('../services/signNftServices');
+const contentCreaterServices=require('../services/contentCreaterServices');
 function authuser(req, res, next) {
     if (req.session&&req.session.role) 
       {
@@ -94,8 +95,9 @@ const author=async(req,res)=>{
 
 const fetchNft=async(req,res)=>{
     let id=req.query.id.trim();
-    let nft=await signNftServices.findLandById(id);
-    res.send(nft[0]);
+    console.log(id);
+    let nft=await signNftServices.findByIdVoucher(id);
+    res.send(nft);
 }
 const addOrder=async(req,res)=>{
     let id=req.query.id.trim();
@@ -105,7 +107,7 @@ const addOrder=async(req,res)=>{
     try{ 
         let nft=await signNftServices.updateNftStatus(id);
         
-        
+        /*
         let user=await userServices.checkUserByWallet(address);
         let user_id="";
         if(user){
@@ -152,8 +154,8 @@ const addOrder=async(req,res)=>{
             status:"success"
             } 
             let orderData=await orderServices.saveOrder(order);
-
-          res.send(order);
+             */
+          res.send(nft);
     }catch(e){console.log(e);}
 
 }

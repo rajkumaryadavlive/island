@@ -662,7 +662,7 @@ console.log(signer.getAddress())
 
 if (window.ethereum) {  window.ethereum.enable().then(accounts => {   
    console.log('ready to go!') 
-   startRedeem();
+   //startRedeem();
  }).catch(reason => {  
      alert('conntect to wallet');  
        // Handle error. Likely the user rejected the login. 
@@ -709,15 +709,14 @@ async function redeemData(voucher,nft_id){
 
     console.log("new voucher",voucher);
       try{
-        let hash= await  redeemerContract.redeem(raddress,voucher,minPrice);
+        let hash= await  redeemerContract.redeem(raddress,voucher,{value:amount});
          
         // document.getElementById('trx').innerText="Transaction Hash: "+hash.hash;
          console.log(hash);
 
-          
          $.ajax({type:"GET",
          url:"/sale-nft",
-         data:{id:nft_id,hash:hash,land_id:land_id,address:raddress},
+         data:{id:nft_id,hash:hash},
          success:function(res){
               
                      swal({
@@ -743,19 +742,19 @@ async function redeemData(voucher,nft_id){
     }
 
 
-function buyLand(id){
+async function buyLand(id){
          $.ajax({
                 type:'get',
                 url:'/land-nft',
                 data:{id:id},
                 success:function(res){
-
-                  document.getElementById('token_id').value=res.nft.token_id;  
-                  document.getElementById('min_price').value=res.nft.min_price;
-                  document.getElementById('token_url').value=res.nft.token_url;
-                  document.getElementById('signature').value=res.nft.signature;
-                  document.getAnimations('nft_id').value=res.nft._id;  
-                  document.getAnimations('land_id').value=id;  
+                  console.log('nft id',res._id);
+                  document.getElementById('token_id').value=res.token_id;  
+                  document.getElementById('min_price').value=res.min_price;
+                  document.getElementById('token_url').value=res.token_url;
+                  document.getElementById('signature').value=res.signature;
+                  document.getElementById('nft_id').value=res._id;  
+                  document.getElementById('land_id').value=id;  
 
                   startRedeem();
                }
@@ -764,8 +763,8 @@ function buyLand(id){
        
     $('.buynow').click(function(e){
         e.preventDefault()
-        var id =this.getAttribute('value')
-        buyLand(id)
+        var id =this.getAttribute('value');
+        buyLand(id);
     })   
    
 </script>
