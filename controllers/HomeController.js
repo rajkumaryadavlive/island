@@ -6,6 +6,7 @@ const jwt = require('jsonwebtoken');
 const multer = require('multer');
 const path = require('path');
 const paintingServices = require("../services/paintingServices");
+const landServices=require('../services/landServices');
 const blockchainServices = require("../services/blockchainServices");
 const userServices = require("../services/userServices");
 const token = require('../helper/token');
@@ -44,7 +45,12 @@ const upload = multer({
 }).single('file');
 
 const market=async (req,res)=>{
-        res.render('market',{ layout: 'layout/front/frontlayout',name:req.session.re_usr_name});
+   // let lands=await landServices.findLand();
+    let lands=await landServices.findLand()
+  
+      console.log('land data',lands)
+ 
+        res.render('market',{ layout: 'layout/front/frontlayout',name:req.session.re_usr_name,lands:lands});
 }
 
 const map=async (req,res)=>{
@@ -69,10 +75,12 @@ const model=async (req,res)=>{
 
 }
 const contentDetail=async(req,res)=>{
-   // let id=req.query.id.trim();
+    let id=req.query.id.trim();
+    let lands=await landServices.findLandById(id)
+    console.log('get by id land',lands)
     //let details=await paintingServices.getContentDetail(id);
     //let creater=await userServices.checkUserByID(details.created_by);
-    res.render('details',{layout:'layout/front/frontlayout',name:req.session.re_usr_name});
+    res.render('details',{layout:'layout/front/frontlayout',name:req.session.re_usr_name,land:lands});
 }
 
 const author=async(req,res)=>{

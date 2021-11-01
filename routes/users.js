@@ -98,7 +98,7 @@ router.get('/terms-conditions',authController.termsPage);
  router.get('/lands',LandController.land);
  router.get('/add-land',LandController.createLand);
  router.get('/edit-land',LandController.editLand);
-
+ router.get('/delete-land',LandController.deleteLand);
  router.post('/save-land',LandController.uploadFiles,LandController.saveLand);
  router.post('/update-land',LandController.uploadFiles,LandController.updateLand)
  router.get('/mint-land',LandController.mintLand);

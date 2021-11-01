@@ -83,6 +83,8 @@ const mintLand=async(req,res)=>{
 }
 
 const updateLand=async(req,res)=>{
+  console.log('data update land',req.body)
+  
     let land=req.body;
     let id=req.body.id;
     let user_id=req.session.re_us_id;
@@ -96,11 +98,11 @@ const updateLand=async(req,res)=>{
               size:land.size,
               quantity:land.quantity,
               content:land.content,
-              created_by:user_id,
+              //created_by:user_id,
             }
 
    let  landDetail=await landServices.editLand(landObj,id);   
-   console.log(landDetail);
+   console.log('landDetail',landDetail);
 
     if(files){
         files.forEach( async function(file,index)
@@ -108,13 +110,21 @@ const updateLand=async(req,res)=>{
          let media_type=file.mimetype.split("/","2");
         
          console.log(media_type);
-         let image={land_id:landDetail._id,name:file.filename,type:media_type}
-         let content_media=await landServices.updateImages(imageObj);
-         console.log(content_media);
+         let imageObj={name:file.filename,type:media_type}
+         let content_media=await landServices.updateImages(imageObj,id);
+         console.log('image update',content_media);
        });
     }
 
    res.redirect('/users/lands');
+}
+const deleteLand= async (req,res)=>{
+  let id = req.query.id.trim()
+  let responce=await landServices.deleteLandById(id);
+  console.log('delete land resp',responce)
+  if(responce){
+    res.redirect('/users/lands');
+  }
 }
 const land=async (req,res)=>{
     let landData=await landServices.findLand();
@@ -124,9 +134,10 @@ const land=async (req,res)=>{
 }
 
 const editLand=async (req,res)=>{
-     let orders=await orderServices.getOrders();
+  var id = req.query.id
+     let orders=await landServices.findLandById(id);
       console.log(orders);
-     res.render('admin/land/edit',{role:req.session.role,name:req.session.re_usr_name,orders:orders});
+     res.render('admin/land/edit',{role:req.session.role,name:req.session.re_usr_name,land:orders});
     
 }
 
@@ -187,5 +198,6 @@ module.exports = {
     saveLand,
     updateLand,
     mintLand,
-    signNft
+    signNft,
+    deleteLand
 };

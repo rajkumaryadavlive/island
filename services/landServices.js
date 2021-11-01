@@ -11,7 +11,9 @@ const addLand=async(data)=>{
 
 const editLand=async(data,id)=>{
     try{
-       let land=await LandInfo.updateOne('_id',{$set:{data}});
+        console.log('==========data',data,'++++++id',id)
+       let land=await LandInfo.updateOne({'_id':id},{$set:data});
+      console.log('land',land)
        return land;
     }catch(e){console.log(e);}
 }
@@ -59,5 +61,19 @@ const addImages=async(LandImage)=>{
          return images;
      }catch(e){ console.log(e); }
   }
-
-module.exports={findLand,addLand,editLand,findLandById,addImages}
+  const updateImages=async(imageObj,id)=>{
+    try{
+       
+        let data=await LandImageInfo.updateOne({'land_id':id},{$set:imageObj});
+        return data;
+    }catch(e){ console.log(e); }
+ }
+ 
+ const deleteLandById=async(id)=>{
+    try{
+       
+        let data=await LandInfo.deleteOne({'_id':id});
+        return data;
+    }catch(e){ console.log(e); }
+ }
+module.exports={findLand,addLand,editLand,findLandById,addImages,updateImages,deleteLandById}
