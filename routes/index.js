@@ -10,7 +10,8 @@ router.get('/',authuser,HomeController.index);
 router.get('/place-bid',BidController.placeBid);
 
 router.get('/market',authuser,HomeController.market);
-
+router.get('/land-nft',HomeController.fetchNft);
+router.get('/sale-nft',HomeController.addOrder);
 router.get('/map',authuser,HomeController.map);
 
 router.get('/search',HomeController.exploreContent);

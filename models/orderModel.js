@@ -10,22 +10,21 @@ var OrderSchema =  new moongoose.Schema({
 
     user_id:[{ type: moongoose.Schema.Types.ObjectId, ref: 'users' }],
 
-    content_id:[{ type: moongoose.Schema.Types.ObjectId, ref: 'paintings' }],
-    creator_id:[{ type: moongoose.Schema.Types.ObjectId, ref: 'users' }],
-
-    trans_id:{
-        type:String,
-       },
-    user_wallet_address:{
+    land_id:[{ type: moongoose.Schema.Types.ObjectId, ref: 'paintings' }],
+   
+    wallet_address:{
            type:String
          },  
+    hash:{
+          type:String
+    }, 
     total:{
        type:String
       },
     status:{
 
         type:String,
-        default:'pending'
+        default:'success'
 
     },
     created_at:{ 

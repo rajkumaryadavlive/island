@@ -59,6 +59,8 @@ let quantity="<%=land.quantity %>";
 let land_id="<%=land._id %>";
 let land_image="<%=land_image %>";
 //minPrice=1;
+console.log('land_id',land_id);
+console.log(land_image);
   console.log("min price",minPrice);
   console.log(tokenUrl);   
 
@@ -75,7 +77,7 @@ let land_image="<%=land_image %>";
          url:"/users/add-nft",
          data:{voucher:voucher,no_of_copy:quantity,land_id:land_id,land_image:land_image},
          success:function(res){
-            window.location.href="/users/lands";
+           // window.location.href="/users/lands";
          }
            
         
