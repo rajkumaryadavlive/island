@@ -133,6 +133,15 @@ const land=async (req,res)=>{
 
 }
 
+const landDetail=async(req,res)=>{
+  let id=req.query.id.trim();
+  let land=await landServices.findLandById(id);
+  let images=await landServices.findImagebyId(land._id);
+  console.log(images)
+  console.log(land);
+  res.render('details',{layout:'layout/front/frontlayout',name:req.session.re_usr_name,land:land,images:images});
+}
+
 const editLand=async (req,res)=>{
   var id = req.query.id
      let orders=await landServices.findLandById(id);
@@ -199,5 +208,6 @@ module.exports = {
     updateLand,
     mintLand,
     signNft,
-    deleteLand
+    deleteLand,
+    landDetail
 };

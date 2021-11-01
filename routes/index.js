@@ -3,12 +3,13 @@ var router = express.Router();
 const HomeController=require('../controllers/HomeController');
 const TransactionController=require('../controllers/TransactionController');
 const BidController=require('../controllers/BidController');
+const LandController=require('../controllers/LandController');
 const authuser=require('../middleware/authuser');
 /* GET home page. */
 //router.use(authuser);
 router.get('/',authuser,HomeController.index);
 router.get('/place-bid',BidController.placeBid);
-
+router.get('/detail',LandController.landDetail);
 router.get('/market',authuser,HomeController.market);
 router.get('/land-nft',HomeController.fetchNft);
 router.get('/sale-nft',HomeController.addOrder);
@@ -36,6 +37,6 @@ router.get('/subscribed',authuser,function(req,res){
 router.get('/buy-plan',authuser,function(req,res){
   res.render('buy-plan',{layout:'layouts/front/layout',name: req.session.re_usr_name});
 });
-router.get('/detail',authuser,HomeController.contentDetail);
+//router.get('/detail',authuser,HomeController.contentDetail);
 
 module.exports = router;
