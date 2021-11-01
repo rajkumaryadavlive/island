@@ -47,11 +47,21 @@ const upload = multer({
 
 const market=async (req,res)=>{
    // let lands=await landServices.findLand();
-    let lands=await landServices.findLand()
+    let lands = await landServices.findLand()
   
       console.log('land data',lands)
- 
-        res.render('market',{ layout: 'layout/front/frontlayout',name:req.session.re_usr_name,lands:lands});
+
+     let landData = await landServices.findAllLand()
+     var data=[]
+     for(var key of landData){
+         var temp = JSON.stringify(key);
+         var temp1 = JSON.parse(temp);
+         let imageInfos = await landServices.findImagesByID(key._id)
+         temp1.imageInfo = imageInfos
+         data.push(temp1)
+     }
+     console.log('data ===========================',data)
+        res.render('market',{ layout: 'layout/front/frontlayout',name:req.session.re_usr_name,lands:lands,datas:data});
 }
 
 const map=async (req,res)=>{
