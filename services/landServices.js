@@ -23,14 +23,14 @@ const findLandById=async(id)=>{
 const findLand=async()=>{
      try{
          
-         lands=await LandInfo.aggregate([
+        let lands=await LandInfo.aggregate([
             { "$match": {'status':'active'} },
             { "$sort": { "price": 1 } },
             { "$limit": 20 }, 
             { "$lookup": {
-              "localField": "land_id",
+              "localField": "_id",
               "from": "land_images",
-              "foreignField": "_id",
+              "foreignField": "land_id",
               "as": "imageinfo"
             } },
             { "$unwind": "$imageinfo" },

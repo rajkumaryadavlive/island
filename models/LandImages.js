@@ -18,7 +18,7 @@ var LandImageSchema =  new moongoose.Schema({
     },
     status:{
         type:String,
-        default:'pending'
+        default:'active'
 
     },
     created_at: { 

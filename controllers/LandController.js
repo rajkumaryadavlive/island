@@ -117,9 +117,9 @@ const updateLand=async(req,res)=>{
    res.redirect('/users/lands');
 }
 const land=async (req,res)=>{
-    let lands=await landServices.findLand();
-    console.log('lands',land);
-    res.render('admin/land/',{lands:lands,role:req.session.role,name:req.session.re_usr_name});
+    let landData=await landServices.findLand();
+    console.log('lands',landData);
+    res.render('admin/land/',{landData:landData,role:req.session.role,name:req.session.re_usr_name});
 
 }
 

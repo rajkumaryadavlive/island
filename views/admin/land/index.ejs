@@ -38,14 +38,15 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <% landData.forEach(function(land,index){%>
                                     <tr>
                                         <td><img class="rounded-circle" width="35" src="/assets/images/profile/small/pic1.jpg" alt=""></td>
                                         <td><img class="rounded-circle" width="35" src="/assets/images/profile/small/pic1.jpg" alt=""></td>
-                                        <td>Tiger Nixon</td>
-                                        <td>3</td>
-                                        <td>300*500</td>
-                                        <td>5,00,000</td>
-                                        <td>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</td>
+                                        <td><%=land.name %></td>
+                                        <td><%=land.quantity %></td>
+                                        <td><%=land.size %></td>
+                                        <td><%=land.price %></td>
+                                        <td><%=land.content %></td>
                                         
                                         <td>
                                             <div class="d-flex">
@@ -54,134 +55,7 @@
                                             </div>												
                                         </td>												
                                     </tr>
-                                   <tr>
-                                        <td><img class="rounded-circle" width="35" src="images/profile/small/pic1.jpg" alt=""></td>
-                                        <td><img class="rounded-circle" width="35" src="images/profile/small/pic1.jpg" alt=""></td>
-                                        <td>Tiger Nixon</td>
-                                        <td>3</td>
-                                        <td>300*500</td>
-                                        <td>5,00,000</td>
-                                        <td>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</td>
-                                        
-                                        <td>
-                                            <div class="d-flex">
-                                                <a href="#" class="btn btn-primary shadow btn-xs sharp mr-1"><i class="fa fa-pencil"></i></a>
-                                                <a href="#" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
-                                            </div>												
-                                        </td>												
-                                    </tr>
-                                    <tr>
-                                        <td><img class="rounded-circle" width="35" src="images/profile/small/pic1.jpg" alt=""></td>
-                                        <td><img class="rounded-circle" width="35" src="images/profile/small/pic1.jpg" alt=""></td>
-                                        <td>Tiger Nixon</td>
-                                        <td>3</td>
-                                        <td>300*500</td>
-                                        <td>5,00,000</td>
-                                        <td>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</td>
-                                        
-                                        <td>
-                                            <div class="d-flex">
-                                                <a href="#" class="btn btn-primary shadow btn-xs sharp mr-1"><i class="fa fa-pencil"></i></a>
-                                                <a href="#" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
-                                            </div>												
-                                        </td>												
-                                    </tr>
-                                    <tr>
-                                        <td><img class="rounded-circle" width="35" src="images/profile/small/pic1.jpg" alt=""></td>
-                                        <td><img class="rounded-circle" width="35" src="images/profile/small/pic1.jpg" alt=""></td>
-                                        <td>Tiger Nixon</td>
-                                        <td>3</td>
-                                        <td>300*500</td>
-                                        <td>5,00,000</td>
-                                        <td>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</td>
-                                        
-                                        <td>
-                                            <div class="d-flex">
-                                                <a href="#" class="btn btn-primary shadow btn-xs sharp mr-1"><i class="fa fa-pencil"></i></a>
-                                                <a href="#" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
-                                            </div>												
-                                        </td>												
-                                    </tr>
-                                    <tr>
-                                        <td><img class="rounded-circle" width="35" src="images/profile/small/pic1.jpg" alt=""></td>
-                                        <td><img class="rounded-circle" width="35" src="images/profile/small/pic1.jpg" alt=""></td>
-                                        <td>Tiger Nixon</td>
-                                        <td>3</td>
-                                        <td>300*500</td>
-                                        <td>5,00,000</td>
-                                        <td>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</td>
-                                        
-                                        <td>
-                                            <div class="d-flex">
-                                                <a href="#" class="btn btn-primary shadow btn-xs sharp mr-1"><i class="fa fa-pencil"></i></a>
-                                                <a href="#" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
-                                            </div>												
-                                        </td>												
-                                    </tr>
-                                    <tr>
-                                        <td><img class="rounded-circle" width="35" src="images/profile/small/pic1.jpg" alt=""></td>
-                                        <td><img class="rounded-circle" width="35" src="images/profile/small/pic1.jpg" alt=""></td>
-                                        <td>Tiger Nixon</td>
-                                        <td>3</td>
-                                        <td>300*500</td>
-                                        <td>5,00,000</td>
-                                        <td>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</td>
-                                        
-                                        <td>
-                                            <div class="d-flex">
-                                                <a href="#" class="btn btn-primary shadow btn-xs sharp mr-1"><i class="fa fa-pencil"></i></a>
-                                                <a href="#" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
-                                            </div>												
-                                        </td>												
-                                    </tr>
-                                    <tr>
-                                        <td><img class="rounded-circle" width="35" src="images/profile/small/pic1.jpg" alt=""></td>
-                                        <td><img class="rounded-circle" width="35" src="images/profile/small/pic1.jpg" alt=""></td>
-                                        <td>Tiger Nixon</td>
-                                        <td>3</td>
-                                        <td>300*500</td>
-                                        <td>5,00,000</td>
-                                        <td>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</td>
-                                        
-                                        <td>
-                                            <div class="d-flex">
-                                                <a href="#" class="btn btn-primary shadow btn-xs sharp mr-1"><i class="fa fa-pencil"></i></a>
-                                                <a href="#" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
-                                            </div>												
-                                        </td>												
-                                    </tr>
-                                    <tr>
-                                        <td><img class="rounded-circle" width="35" src="images/profile/small/pic1.jpg" alt=""></td>
-                                        <td><img class="rounded-circle" width="35" src="images/profile/small/pic1.jpg" alt=""></td>
-                                        <td>Tiger Nixon</td>
-                                        <td>3</td>
-                                        <td>300*500</td>
-                                        <td>5,00,000</td>
-                                        <td>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</td>
-                                        
-                                        <td>
-                                            <div class="d-flex">
-                                                <a href="#" class="btn btn-primary shadow btn-xs sharp mr-1"><i class="fa fa-pencil"></i></a>
-                                                <a href="#" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
-                                            </div>												
-                                        </td>												
-                                    </tr>
-                                    <tr>
-                                        <td><img class="rounded-circle" width="35" src="images/profile/small/pic1.jpg" alt=""></td>
-                                        <td><img class="rounded-circle" width="35" src="images/profile/small/pic1.jpg" alt=""></td>
-                                        <td>Tiger Nixon</td>
-                                        <td>3</td>
-                                        <td>300*500</td>
-                                        <td>5,00,000</td>
-                                        <td>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</td>
-                                        
-                                        <td>
-                                            <div class="d-flex">
-                                                <a href="#" class="btn btn-primary shadow btn-xs sharp mr-1"><i class="fa fa-pencil"></i></a>
-                                                <a href="#" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
-                                            </div>												
-                                        </td>												
-                                    </tr>
+                                 <% }) %>
                                 </tbody>
                             </table>
                         </div>
