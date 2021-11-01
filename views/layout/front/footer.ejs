@@ -679,6 +679,8 @@ async function startRedeem(){
     let minPrice=document.getElementById('min_price').value;
     let signature=document.getElementById('signature').value;
     let nft_id=document.getElementById('nft_id').value;
+    let land_id=document.getElementById('land_id').value;
+
     const voucherObj={
         tokenId:tokenId,
         uri:uri,
@@ -686,7 +688,7 @@ async function startRedeem(){
         signature:signature
     };
 
-    await redeemData(voucherObj,nft_id)
+    await redeemData(voucherObj,nft_id,land_id)
 }
 
 async function redeemData(voucher,nft_id){
@@ -701,13 +703,13 @@ async function redeemData(voucher,nft_id){
       catch(err){
           console.log(err);
       } */
-    let minPrice=0;
+    let minPrice=voucher.minPrice;
    //const minPrice =""; //ethers.constants.WeiPerEther // charge 1 Eth
-    //let amount= '0x' + ((minPrice*1000000000000000000).toString(16))
+    let amount= '0x' + ((minPrice*1000000000000000000).toString(16))
 
     console.log("new voucher",voucher);
       try{
-        let hash= await  redeemerContract.redeem(raddress,voucher);
+        let hash= await  redeemerContract.redeem(raddress,voucher,minPrice);
          
         // document.getElementById('trx').innerText="Transaction Hash: "+hash.hash;
          console.log(hash);
@@ -715,7 +717,7 @@ async function redeemData(voucher,nft_id){
           
          $.ajax({type:"GET",
          url:"/sale-nft",
-         data:{id:nft_id,hash:hash},
+         data:{id:nft_id,hash:hash,land_id:land_id,address:raddress},
          success:function(res){
               
                      swal({
@@ -741,8 +743,7 @@ async function redeemData(voucher,nft_id){
     }
 
 
-   
-     function buyLand(id){
+function buyLand(id){
          $.ajax({
                 type:'get',
                 url:'/users/land-nft',
@@ -758,7 +759,7 @@ async function redeemData(voucher,nft_id){
 
                   startRedeem();
                }
-         })
+         });
      }   
        
        
