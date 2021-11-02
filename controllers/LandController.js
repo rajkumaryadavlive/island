@@ -127,9 +127,22 @@ const deleteLand= async (req,res)=>{
   }
 }
 const land=async (req,res)=>{
-    let landData=await landServices.findLand();
-    console.log('lands',landData);
-    res.render('admin/land/',{landData:landData,role:req.session.role,name:req.session.re_usr_name});
+    //let landData=await landServices.findLand();
+
+    //console.log('lands',landData);
+    //console.log('land data',lands)
+
+     let landDatas = await landServices.findAllLand()
+     var data=[]
+     for(var key of landDatas){
+         var temp = JSON.stringify(key);
+         var temp1 = JSON.parse(temp);
+         let imageInfos = await landServices.findImagesByID(key._id)
+         temp1.imageinfo = imageInfos
+         data.push(temp1)
+     }
+     console.log('data ===========================',data)
+    res.render('admin/land/',{landData:data,role:req.session.role,name:req.session.re_usr_name,});
 
 }
 

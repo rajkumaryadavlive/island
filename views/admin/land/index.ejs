@@ -39,11 +39,11 @@
                                 </thead>
                                 <tbody>
                                     <% landData.forEach(function(land,index){%>
-                                        <%=land.imageinfo.type[0]%>
+                                        
                                        
                                     <tr>
-                                        <td><img class="rounded-circle" width="35" src="/uploadFile/<%=land.imageinfo.name%>" alt="" onerror="this.onerror=null;this.src='/assets/images/profile/small/pic1.jpg';"></td>
-                                        <td><img class="rounded-circle" width="35" src="/uploadFile/<%=land.imageinfo.name%>" alt="" onerror="this.onerror=null;this.src='/assets/images/profile/small/pic1.jpg';"></td>
+                                        <td><img class="rounded-circle" width="35" src="/uploadFile/<%=land.imageinfo.name%>" alt="" ></td>
+                                        <td><img class="rounded-circle" width="35" src="/uploadFile/<%=land.imageinfo.name%>" alt="" ></td>
                                         <td><%=land.name %></td>
                                         <td><%=land.quantity %></td>
                                         <td><%=land.size %></td>
