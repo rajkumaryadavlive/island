@@ -52,7 +52,7 @@ const manageKYC=async (req,res)=>{
 
 const manageTransaction=async (req,res)=>{
      let orders=await orderServices.getOrders();
-     console.log(orders);
+     console.log('orders====',orders);
     res.render('admin/transactions/',{role:req.session.role,name:req.session.re_usr_name,orders:orders});
     
 }
