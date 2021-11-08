@@ -92,6 +92,13 @@ const checkUserByWallet = async (address) => {
    }
 };
 
+const checkUserByWalletAddress = async (address) => {
+  let user = await UserInfo.findOne({ 'wallet_address':address}).count();
+  if (user) {
+    return user;
+   }
+};
+
 const checkUserPass = async (email, password) => {
   let user = await UserInfo.findOne({ 'email': email, 'password': password });
   if (user) {
@@ -393,4 +400,5 @@ module.exports = {
   totalCreators,
   updateUserPrivateKey,
   updateAccount,
+  checkUserByWalletAddress
 };

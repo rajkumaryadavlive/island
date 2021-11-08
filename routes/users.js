@@ -15,6 +15,7 @@ const orderController=require('../controllers/orderController');
 const categoryController=require('../controllers/CategoryController');
 const PageController=require('../controllers/PageController');
 const LandController=require('../controllers/LandController');
+const HomeController=require('../controllers/HomeController');
 router.use(session({
   secret: 'keyboard cat',
   resave: false,
@@ -31,6 +32,7 @@ router.use(flash());
 
 router.get('/login',authController.loginPage);
 router.get('/signup',authController.signup);
+router.post('/sale-nft',HomeController.addOrder);
 router.post('/submitSignup',authController.submitSignup);
 router.post('/login', authController.userLogin);
 router.get('/logout',authController.logout);

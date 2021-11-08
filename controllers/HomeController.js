@@ -19,6 +19,8 @@ const { UserInfo } = require("../models/userModel");
 const categoryServices=require('../services/categoryServices');
 const signNftServices=require('../services/signNftServices');
 const contentCreaterServices=require('../services/contentCreaterServices');
+const orderServices=require('../services/orderServices');
+//const landServices=require('../services/landServices');
 function authuser(req, res, next) {
     if (req.session&&req.session.role) 
       {
@@ -110,14 +112,17 @@ const fetchNft=async(req,res)=>{
     res.send(nft);
 }
 const addOrder=async(req,res)=>{
-    let id=req.query.id.trim();
-    let hash=req.query.hash;
-    let address=req.query.address;
-    let land_id=req.query.land_id;
+    let body=req.body;
+    let id=body.id;
+    let hash=body.hash;
+    let address=body.address;
+    let land_id=body.land_id;
+    address=address.toLowerCase();
+    console.log(address);
     try{ 
         let nft=await signNftServices.updateNftStatus(id);
         
-        /*
+        
         let user=await userServices.checkUserByWallet(address);
         let user_id="";
         if(user){
@@ -132,7 +137,7 @@ const addOrder=async(req,res)=>{
         else
           {
                 let email=address+"@gmail.com";
-                let mystr = await contentCreaterServices.createCipher("123456");
+                let mystr ='12345'; //await contentCreaterServices.createCipher("123456");
                 let created = await contentCreaterServices.createAtTimer();
                 userOBJ={ name:address,
                        email:email,
@@ -164,10 +169,27 @@ const addOrder=async(req,res)=>{
             status:"success"
             } 
             let orderData=await orderServices.saveOrder(order);
-             */
+             
           res.send(nft);
     }catch(e){console.log(e);}
 
+}
+
+const  transactionHistory=async(req,res)=>{
+    let user_id=req.session.re_us_id;
+    let landDatas =await orderServices.findOrderByUser(user_id);
+   
+    var transaction=[]
+    for(var key of landDatas){
+        var temp = JSON.stringify(key);
+        var temp1 = JSON.parse(temp);
+        let imageInfos = await landServices.findImagesByID(key.land_id)
+        temp1.imageinfo = imageInfos
+        transaction.push(temp1)
+    }
+
+    console.log(transaction);
+    res.render('users/transactions/index',{layout:'layout/front/frontlayout',name:req.session.re_usr_name,tx:transaction})
 }
 module.exports = {
     market,
@@ -179,5 +201,6 @@ module.exports = {
     authuser,
     map,
     addOrder,
-    fetchNft
+    fetchNft,
+    transactionHistory
 };

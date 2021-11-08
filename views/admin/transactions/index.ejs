@@ -30,35 +30,33 @@
                                           <tr>
                                               <th width="20%">Amount</th>
                                               <th width="30%">Payment hash</th>
-                                              <th width="30%">Wallet add</th>
+                                              <th width="30%">Wallet address</th>
                                               <th width="20%">Status</th>
                                           </tr>
                                       </thead>
                                       <tbody>
-                                          <tr>
-                                              <td>30,000</td>
-                                              <td>43jh43hjhjh3hgg4334</td>
-                                              <td>vvb4vb4vb433bbv4n43m4434v34vvb432vb2bv</td>
-                                              <td><span class="badge badge-warning">Pending</span></td>
-                                          </tr>
-                                          <tr>
-                                              <td>30,000</td>
-                                              <td>43jh43hjhjh3hgg4334</td>
-                                              <td>vvb4vb4vb433bbv4n43m4434v34vvb432vb2bv</td>
-                                              <td><span class="badge badge-success">Confirm</span> </td>
-                                          </tr>
-                                           <tr>
-                                              <td>30,000</td>
-                                              <td>43jh43hjhjh3hgg4334</td>
-                                              <td>vvb4vb4vb433bbv4n43m4434v34vvb432vb2bv</td>
-                                              <td><span class="badge badge-warning">Pending</span></td>
-                                          </tr>
-                                          <tr>
-                                              <td>30,000</td>
-                                              <td>43jh43hjhjh3hgg4334</td>
-                                              <td>vvb4vb4vb433bbv4n43m4434v34vvb432vb2bv</td>
-                                              <td><span class="badge badge-success">Confirm</span> </td>
-                                          </tr>
+                                       <% orders.forEach(function(order,index){%>
+
+                                        <tr>
+                                            <td><%=order.total %></td>
+                                            <td>
+                                                <a id="hash" href="https://ropsten.etherscan.io/tx/<%=order.hash %>" target="_blank">
+                                                    <%=order.hash %>
+                                                </a>
+                                               
+                                            
+                                            </td>
+                                            <td>
+                                                <a href="https://ropsten.etherscan.io/address/<%=order.wallet_address %>" target="_blank">
+                                                    <%=order.wallet_address %> 
+                                                </a>
+                                            </td>
+                                            <td><span class="badge badge-warning">Success</span></td>
+                                        </tr>
+
+                                       <% })    %>
+                                          
+                                         
                                      
                                          
                                          
@@ -76,3 +74,20 @@
       <!--**********************************
           Content body end
       ***********************************-->
+      <style>
+     a#hash {
+    color: #b30606;
+    max-width: 200 px !important;
+    overflow: hidden;
+    display: inline-block;
+    width: 315px !important;
+}
+
+a#hash {
+    color: #b30606;
+    max-width: 200 px !important;
+    overflow: hidden;
+    display: inline-block;
+    width:300px !important;
+}
+      </style>

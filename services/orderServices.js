@@ -6,6 +6,7 @@ const { Registration, Userwallet, Importwallet, Tokensettings, Tokendetails, Ord
 const {  UserInfo } = require('../models/userModel');
 const { OrderInfo } =require('../models/orderModel');
 const { mail } = require('../helper/mailer');
+const moongoose = require('mongoose');
 
 
 
@@ -147,13 +148,24 @@ const totalEarning=async(user_id)=>{
  const updateNftHash=async(id,hash)=>{
   let order=await OrderInfo.updateOne({'trans_id':id}, { $set: {nft_hash:hash} });
 }
+const findOrderByUser=async(user_id)=>{
+  console.log('user id',user_id);
+   try{
 
+        //let order=await OrderInfo.find({'user_id':user_id});
 
+      let order=await OrderInfo.find({user_id:new moongoose.Types.ObjectId(user_id)}); 
+      
+        return order; 
+      }catch(e){console.log(e)}  
+    }
 module.exports = {
   saveOrder,
   getOrders,
   findOrder,
   findOrderByID,
   updateOrder,
-  totalEarning
+  totalEarning,
+  findOrderByUser,
+  updateNftHash
 };

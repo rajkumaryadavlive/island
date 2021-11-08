@@ -12,8 +12,8 @@ router.get('/place-bid',BidController.placeBid);
 router.get('/detail',LandController.landDetail);
 router.get('/market',authuser,HomeController.market);
 router.get('/land-nft',HomeController.fetchNft);
-router.get('/sale-nft',HomeController.addOrder);
 router.get('/map',authuser,HomeController.map);
+router.get('/transactions',HomeController.transactionHistory);
 
 router.get('/search',HomeController.exploreContent);
 router.get('/defi', function(req, res, next) {

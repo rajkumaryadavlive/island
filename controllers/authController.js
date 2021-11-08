@@ -218,11 +218,11 @@ const loginByWallet=async(req,res)=>{
   
      }else{
         
-
-         let user=await userServices.checkUserByWallet(address);
-         console.log("user account",user);
-         if(user){
-     
+        
+        let userCheck=await userServices.checkUserByWalletAddress(address);
+         console.log("user account",userCheck);
+         if(userCheck>0){
+            let user=await userServices.checkUserByWallet(address);
              req.session.success = true;
              req.session.re_us_id = user._id;
              req.session.re_usr_name = user.name;
