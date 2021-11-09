@@ -392,7 +392,7 @@ justify-content: center;
 
 }
 .sidenav a img{
-    height: 16px;
+    height: 16px !important;
     margin-right: 10px;
     visibility: hidden;
     transition: 0.3s;
@@ -1234,7 +1234,8 @@ a{
 }
 .banner-slider .slider-banner .item .inner-banner-text .outer-frame {
     min-height: 60vh;
-    }
+    margin-top: 60px;
+}
 
 .banner-section .inner-banner-text h4 {
     font-size: 20px;
