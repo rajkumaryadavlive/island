@@ -673,6 +673,7 @@ else
 }
 
 async function startRedeem(){
+    await onLogin();
 
     let tokenId=document.getElementById('token_id').value;
     let uri=document.getElementById('token_url').value;
