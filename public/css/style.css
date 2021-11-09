@@ -45004,3 +45004,18 @@ $color_pallate_15: #ed0b4c; */
       color: #fff; }
 
 /*# sourceMappingURL=style.css.map */
+
+table.dataTable thead th, table.dataTable thead td {
+    font-size: 14px;
+}
+table tbody td img{
+  height: 36px;
+  width: 36px;
+}
+table tbody td a#hash {
+    color: #073773;
+    font-weight: 600;
+}
+table tbody td{
+  max-width: 120px;
+}

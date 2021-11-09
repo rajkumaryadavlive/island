@@ -39,17 +39,21 @@
 
                                         <tr>
                                             <td><%=order.total %></td>
-                                            <td>
-                                                <a id="hash" href="https://ropsten.etherscan.io/tx/<%=order.hash %>" target="_blank">
+                                            <td >
+                                                <div class="transaction-data">
+                                                  <a id="hash" href="https://ropsten.etherscan.io/tx/<%=order.hash %>" target="_blank">
                                                     <%=order.hash %>
                                                 </a>
+                                                </div>
                                                
                                             
                                             </td>
-                                            <td>
-                                                <a href="https://ropsten.etherscan.io/address/<%=order.wallet_address %>" target="_blank">
+                                            <td >
+                                                <div class="transaction-data">
+                                                  <a href="https://ropsten.etherscan.io/address/<%=order.wallet_address %>" target="_blank">
                                                     <%=order.wallet_address %> 
                                                 </a>
+                                                </div>
                                             </td>
                                             <td><span class="badge badge-warning">Success</span></td>
                                         </tr>
@@ -89,5 +93,12 @@ a#hash {
     overflow: hidden;
     display: inline-block;
     width:300px !important;
+}
+td .transaction-data {
+    max-width: 220px;
+    overflow: hidden;
+    display: block;
+    word-break: break-word;
+    white-space: nowrap;
 }
       </style>
