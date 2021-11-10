@@ -70,7 +70,21 @@ const map=async (req,res)=>{
     res.render('map',{ layout: 'layout/front/frontlayout',name:req.session.re_usr_name});
 }
 const index=async(req,res)=>{
-    res.render('index',{layout:'layout/front/frontlayout',name: req.session.re_usr_name})
+    let lands = await landServices.findLand()
+  
+      console.log('land data',lands)
+
+     let landData = await landServices.findAllLand()
+     var data=[]
+     for(var key of landData){
+         var temp = JSON.stringify(key);
+         var temp1 = JSON.parse(temp);
+         let imageInfos = await landServices.findImagesByID(key._id)
+         temp1.imageInfo = imageInfos
+         data.push(temp1)
+     }
+     console.log('data ===========================',data)
+    res.render('index',{layout:'layout/front/frontlayout',name: req.session.re_usr_name,lands:data})
 }
 const exploreContent=async(req,res)=>{
     let query=req.query.category;
