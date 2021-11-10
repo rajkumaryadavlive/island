@@ -19,6 +19,7 @@ const contentCreaterServices = require("../services/contentCreaterServices");
 const orderServices = require("../services/orderServices");
 const categoryServices=require('../services/categoryServices');
 const pageServices=require('../services/pageServices');
+const signNftServices=require('../services/signNftServices')
 const Storage = multer.diskStorage({
     destination:'./public/uploadFile',
     filename:(req,file,cb)=>{
@@ -354,8 +355,8 @@ const dashboard=async (req,res)=>{
     let role=req.session.role;
     let loginwallet = await blockchainServices.importWalletFindId(user_id);
     console.log("login wallet",loginwallet)
-    let total= await paintingServices.totalContent(user_id,role);
-    let total_for_sale=await paintingServices.totalContentForSale(user_id,role);
+    let total= await signNftServices.totalNft();
+    let total_for_sale=await signNftServices.availableNft()
     let total_pending=await paintingServices.totalPendingContent(user_id,role);
     let total_creater=await userServices.totalCreators();
     let total_earning=await orderServices.totalEarning(user_id);

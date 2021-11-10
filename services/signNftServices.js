@@ -34,6 +34,7 @@ const updateNftStatus=async(id)=>{
 }
 
 
+
 const SignData=async(voucher)=>{
 
     try{
@@ -46,9 +47,30 @@ const SignData=async(voucher)=>{
       
 }
 
+const totalNft=async()=>{
+    try{
+         return await  SignNftInfo.find({}).count();
+    }catch(e){console.log(e)}
+}
+
+const availableNft=async()=>{
+    try{
+         return await  SignNftInfo.find({'status':0}).count();
+    }catch(e){console.log(e)}
+}
+
+const soldNft=async()=>{
+    try{
+         return await  SignNftInfo.find({'status':1}).count();
+    }catch(e){console.log(e)}
+}
+
 module.exports={addVoucher,
                findByIdVoucher,
                SignData,
                updateNftStatus,
-               findAllVoucher
+               findAllVoucher,
+               totalNft,
+               soldNft,
+               availableNft
               }

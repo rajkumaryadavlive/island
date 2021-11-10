@@ -6,30 +6,33 @@
        <div class="row">
          <div class="col-md-12">
            <div class="slider-banner">
+              <% lands.forEach(function(land,index){%> 
              <div class="item">
                <img src="/frontassets/images/market/bg5.jpg" class="img-fluid">
                 <div class="text-left inner-banner-text">
                    <div class="row align-items-center">
                       <div class="col-md-5 offset-md-1">
                          <h4 >Become A Land Owner <br> And Mine For BNB!</h4>
-                          <a href="" data-toggle="modal" data-target="#loginModal" class="pre-register-btn animate__animated animate__backInRight wow slideInRight">Buy Now</a>
+                          <a href="/market"  class="pre-register-btn animate__animated animate__backInRight wow slideInRight">Buy Now</a>
                       </div>
                       <div class="col-md-5">
                          <div class="outer-frame">
                            <img class="frame-img"  src="/frontassets/images/animate-gif/Frame1.png" class="img-fluid">
-                            <img class="inner-img" src="/frontassets/images/animate-gif/1house.png" class="img-fluid">
+                            <img class="inner-img" src="/uploadFile/<%=land.imageInfo.name %>" class="img-fluid">
                          </div>
                       </div>
                    </div>
                 </div>
              </div>
-              <div class="item">
+
+             <%}) %>
+             <!-- <div class="item">
                <img src="/frontassets/images/market/bg5.jpg" class="img-fluid">
                 <div class="text-left inner-banner-text">
                    <div class="row align-items-center">
                       <div class="col-md-5 offset-md-1">
                          <h4 >Become A Land Owner <br> And Mine For BNB!</h4>
-                          <a href="" data-toggle="modal" data-target="#loginModal" class="pre-register-btn animate__animated animate__backInRight wow slideInRight">Buy Now</a>
+                          <a href="/market" data-toggle="modal" data-target="#loginModal" class="pre-register-btn animate__animated animate__backInRight wow slideInRight">Buy Now</a>
                       </div>
                       <div class="col-md-5">
                          <div class="outer-frame">
@@ -63,7 +66,7 @@
                    <div class="row align-items-center">
                       <div class="col-md-5 offset-md-1">
                          <h4 >Become A Land Owner <br> And Mine For BNB!</h4>
-                          <a href="" data-toggle="modal" data-target="#loginModal" class="pre-register-btn animate__animated animate__backInRight wow slideInRight">Buy Now</a>
+                          <a href="/market" data-toggle="modal" data-target="#loginModal" class="pre-register-btn animate__animated animate__backInRight wow slideInRight">Buy Now</a>
                       </div>
                       <div class="col-md-5">
                          <div class="outer-frame">
@@ -80,7 +83,7 @@
                    <div class="row align-items-center">
                       <div class="col-md-5 offset-md-1">
                          <h4 >Become A Land Owner <br> And Mine For BNB!</h4>
-                          <a href="" data-toggle="modal" data-target="#loginModal" class="pre-register-btn animate__animated animate__backInRight wow slideInRight">Buy Now</a>
+                          <a href="/market" data-toggle="modal" data-target="#loginModal" class="pre-register-btn animate__animated animate__backInRight wow slideInRight">Buy Now</a>
                       </div>
                       <div class="col-md-5">
                          <div class="outer-frame">
@@ -90,7 +93,7 @@
                       </div>
                    </div>
                 </div>
-             </div>
+             </div>  -->
              
              
            </div>
@@ -111,7 +114,7 @@
                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled</p>
                <div>
                  <a href="/market" class="orange-btn">Buy Land</a>
-                 <a href="/market" class="orange-btn">Discover The Land</a>
+                 <a href="/map" class="orange-btn">Discover The Land</a>
                </div>
             </div>
          </div>
@@ -131,7 +134,7 @@
                <h4 class="">BUY NOW & GET MORE POINTS</h4>
                <p>Income Island is our main utility token that allows you to buy and sell LANDS and /frontassets in The Income Island.</p>
                <div>
-                 <a href="/market" class="orange-btn">Buy /frontassets</a>
+                 <a href="/market" class="orange-btn">Buy Now</a>
                  
                </div>
             </div>
