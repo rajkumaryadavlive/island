@@ -23,7 +23,7 @@ const saveOrder=async (orderData)=>{
     
 }
 const getOrders=async()=>{
-  let orders= await OrderInfo.aggregate([
+  /*let orders= await OrderInfo.aggregate([
     { "$sort": { "_id":-1 } },
     {"$lookup": {
     "localField": "user_id",
@@ -32,7 +32,10 @@ const getOrders=async()=>{
     "as": "userinfo"
     } },
     { "$unwind": "$userinfo" }
-   ]);
+   ]);*/
+
+   let orders=await OrderInfo.find({}).sort( { _id: -1 } ); 
+      
 
   return orders;
 }

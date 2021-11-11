@@ -28,6 +28,7 @@
                                   <table id="example3" class="display" style="min-width: 845px">
                                       <thead>
                                           <tr>
+                                              <th>S/No</th>
                                               <th width="20%">Amount</th>
                                               <th width="30%">Payment hash</th>
                                               <th width="30%">Wallet address</th>
@@ -38,6 +39,8 @@
                                        <% orders.forEach(function(order,index){%>
 
                                         <tr>
+                                            <td><%=index+1 %></td>
+                                            
                                             <td><%=order.total %></td>
                                             <td >
                                                 <div class="transaction-data">
