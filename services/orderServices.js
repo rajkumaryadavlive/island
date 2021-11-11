@@ -24,6 +24,7 @@ const saveOrder=async (orderData)=>{
 }
 const getOrders=async()=>{
   let orders= await OrderInfo.aggregate([
+    { "$sort": { "_id":-1 } },
     {"$lookup": {
     "localField": "user_id",
     "from": "users",
@@ -154,7 +155,7 @@ const findOrderByUser=async(user_id)=>{
 
         //let order=await OrderInfo.find({'user_id':user_id});
 
-      let order=await OrderInfo.find({user_id:new moongoose.Types.ObjectId(user_id)}); 
+      let order=await OrderInfo.find({user_id:new moongoose.Types.ObjectId(user_id)}).sort( { _id: -1 } ); 
       
         return order; 
       }catch(e){console.log(e)}  
