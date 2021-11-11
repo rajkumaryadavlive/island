@@ -15,6 +15,10 @@ var OrderSchema =  new moongoose.Schema({
     wallet_address:{
            type:String
          },  
+    address_to:{
+          type:String,
+          default:null
+        },        
     hash:{
           type:String
     }, 

@@ -12,7 +12,7 @@ const contentCreaterServices=require('../services/contentCreaterServices');
 const paintingServices = require("../services/paintingServices");
 const mintServices=require('../services/mintServices');
 const base_url = process.env.BASE_URL;
-
+const admin_address=process.env.ADMIN_ADDRESS;
 const Storage = multer.diskStorage({
     destination:'./public/uploadFile',
     filename:(req,file,cb)=>{
@@ -70,6 +70,7 @@ const saveOrder=async(req,res)=>{
               content_id:req.body.content_id,
               creator_id:content.created_by,
               trans_id:req.body.trans_id,
+              address_to:admin_address,
               user_wallet_address:req.body.address,
               total:req.body.amount,
               status:"success"
