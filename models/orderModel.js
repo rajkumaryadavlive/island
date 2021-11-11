@@ -17,7 +17,6 @@ var OrderSchema =  new moongoose.Schema({
          },  
     address_to:{
           type:String,
-          default:null
         },        
     hash:{
           type:String

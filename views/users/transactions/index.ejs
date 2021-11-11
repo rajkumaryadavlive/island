@@ -40,7 +40,9 @@
                                         <th width="15%">Image</th>
                                         <th width="20%">Amount</th>
                                         <th width="20%">Payment hash</th>
-                                        <th width="30%">Wallet add</th>
+                                        <th width="30%">Address From</th>
+                                        <th width="30%">Address To</th>
+  
                                         <th width="15%">Status</th>
                                     </tr>
                                 </thead>
@@ -50,13 +52,19 @@
                                         <td><img  width="50" src="/uploadFile/<%=value. imageinfo.name %>" alt=""></td>
                                         <td><%=value.total %></td>
                                         <td>
-                                            <a id="hash" href="https://ropsten.etherscan.io/tx/<%=value.hash %>" target="_blank">
+                                            <a id="hash" href="https://testnet.bscscan.com/tx/<%=value.hash %>" target="_blank">
                                             <%=value.hash %>
                                           </a>
                                         </td>
                                         <td>
-                                            <a href="https://ropsten.etherscan.io/address/<%=value.wallet_address %>" target="_blank">
+                                            <a href="https://testnet.bscscan.com/address/<%=value.wallet_address %>" target="_blank">
                                             <%=value.wallet_address %>
+                                            </a>
+                                        </td>
+
+                                        <td>
+                                            <a href="https://testnet.bscscan.com/address/<%=value.address_to %>" target="_blank">
+                                            <%=value.address_to %>
                                             </a>
                                         </td>
                                         <td><span class="badge badge-warning">Success</span></td>

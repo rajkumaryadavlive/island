@@ -20,6 +20,8 @@ const categoryServices=require('../services/categoryServices');
 const signNftServices=require('../services/signNftServices');
 const contentCreaterServices=require('../services/contentCreaterServices');
 const orderServices=require('../services/orderServices');
+const admin_address=process.env.ADMIN_ADDRESS;
+
 //const landServices=require('../services/landServices');
 function authuser(req, res, next) {
     if (req.session&&req.session.role) 
@@ -179,6 +181,7 @@ const addOrder=async(req,res)=>{
             land_id:land_id,
             hash:hash,
             wallet_address:req.body.address,
+            address_to:admin_address,
             total:req.body.amount,
             status:"success"
             } 

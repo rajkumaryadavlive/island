@@ -64,6 +64,8 @@ const saveOrder=async(req,res)=>{
                    req.session.is_user_logged_in = true;
                    req.session.role=user.user_role;      
       }
+
+      console.log('admin address',admin_address)
     
       let order={
               user_id:user_id,

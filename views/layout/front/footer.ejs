@@ -706,11 +706,11 @@ async function redeemData(voucher,nft_id,land_id){
     let minPrice=1;//voucher.minPrice;
    //const minPrice =""; //ethers.constants.WeiPerEther // charge 1 Eth
     let amount= '0x' + ((minPrice*1000000000000000000).toString(16))
-    let admin_address='0x7A0Fb15634a9939cA928789ba500749D63899E03';
+    let admin_address='0x7Feeb021608a4Da245Ca992dD09f4cb7C1141AF2';
     console.log("new voucher",voucher);
       try{
       //  let hash= await  redeemerContract.redeem(raddress,voucher,admin_address,admin_address,amount,0);
-      let hash= await  redeemerContract.redeem(raddress, voucher,admin_address,admin_address,amount,0,{value:minPrice});
+      let hash= await  redeemerContract.redeem(raddress, voucher,admin_address,admin_address,amount,0,{value:amount});
         // document.getElementById('trx').innerText="Transaction Hash: "+hash.hash;
          console.log(hash.hash);
           let order={id:nft_id,

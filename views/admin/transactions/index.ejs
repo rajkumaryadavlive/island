@@ -31,7 +31,9 @@
                                               <th>S/No</th>
                                               <th width="20%">Amount</th>
                                               <th width="30%">Payment hash</th>
-                                              <th width="30%">Wallet address</th>
+                                              <th width="30%"> From Address</th>
+                                              <th width="30%"> To Address</th>
+
                                               <th width="20%">Status</th>
                                           </tr>
                                       </thead>
@@ -44,7 +46,7 @@
                                             <td><%=order.total %></td>
                                             <td >
                                                 <div class="transaction-data">
-                                                  <a id="hash" href="https://ropsten.etherscan.io/tx/<%=order.hash %>" target="_blank">
+                                                  <a id="hash" href="https://testnet.bscscan.com/tx/<%=order.hash %>" target="_blank">
                                                     <%=order.hash %>
                                                 </a>
                                                 </div>
@@ -53,10 +55,20 @@
                                             </td>
                                             <td >
                                                 <div class="transaction-data">
-                                                  <a href="https://ropsten.etherscan.io/address/<%=order.wallet_address %>" target="_blank">
+                                                  <a href="https://testnet.bscscan.com/address/<%=order.wallet_address %>" target="_blank">
                                                     <%=order.wallet_address %> 
                                                 </a>
                                                 </div>
+                                            </td>
+
+                                            <td>
+                                                <div class="transaction-data">
+                                                    
+                                                    <a href="https://testnet.bscscan.com/address/<%=order.address_to %>" target="_blank">
+                                                        <%=order.address_to %>
+                                                      </a>
+                                                </div>
+                                               
                                             </td>
                                             <td><span class="badge badge-warning">Success</span></td>
                                         </tr>
