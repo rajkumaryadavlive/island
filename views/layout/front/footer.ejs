@@ -703,7 +703,7 @@ async function redeemData(voucher,nft_id,land_id){
       catch(err){
           console.log(err);
       } */
-    let minPrice=1;//voucher.minPrice;
+    let minPrice=voucher.minPrice;
    //const minPrice =""; //ethers.constants.WeiPerEther // charge 1 Eth
     let amount= '0x' + ((minPrice*1000000000000000000).toString(16))
     let admin_address='0x7Feeb021608a4Da245Ca992dD09f4cb7C1141AF2';
