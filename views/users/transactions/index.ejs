@@ -47,9 +47,16 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <% tx.forEach(function(value,index){%>
+                                    <% if(tx.length>0){
+                                        tx.forEach(function(value,index){%>
                                     <tr>
-                                        <td><img  width="50" src="/uploadFile/<%=value. imageinfo.name %>" alt=""></td>
+                                        <td>
+                                            <% if(value. imageinfo){%>
+                                                <img  width="50" src="/uploadFile/<%=value. imageinfo.name %>" alt="">
+
+                                            <%}%>
+                                           
+                                        </td>
                                         <td><%=value.total %></td>
                                         <td>
                                             <a id="hash" href="https://testnet.bscscan.com/tx/<%=value.hash %>" target="_blank">
@@ -69,7 +76,7 @@
                                         </td>
                                         <td><span class="badge badge-warning">Success</span></td>
                                     </tr>
-                                    <% }) %>
+                                    <% }) }%>
                                 </tbody>
                             </table>
                             </div>
