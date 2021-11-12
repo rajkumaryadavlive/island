@@ -46,12 +46,19 @@ const saveLand=async(req,res)=>{
     if(req.files){
         files=req.files;
     }
+ let video_name=req.files[1].filename;
+ let image_name=req.files[0].filename;
+
+ console.log(video_name);
+ console.log('image name',image_name);
 
     let landObj={
               name:land.name,
               price:land.price,
               size:land.size,
               quantity:land.quantity,
+              image:image_name,
+              video:video_name,
               content:land.content,
               created_by:user_id,
             }
@@ -100,8 +107,9 @@ const updateLand=async(req,res)=>{
               content:land.content,
               //created_by:user_id,
             }
+            
+   let  landDetail=await landServices.editLand(landObj,id); 
 
-   let  landDetail=await landServices.editLand(landObj,id);   
    console.log('landDetail',landDetail);
 
     if(files){
@@ -109,8 +117,17 @@ const updateLand=async(req,res)=>{
         {
          let media_type=file.mimetype.split("/","2");
         
-         console.log(media_type);
-         let imageObj={name:file.filename,type:media_type}
+          console.log(media_type);
+          let imageObj={name:file.filename,type:media_type}
+          
+            if(media_type.includes('image')){
+             await landServices.editLand({image:filename},id);
+            }
+            else
+              {
+                await landServices.editLand({video:filename},id);
+              }
+
          let content_media=await landServices.updateImages(imageObj,id);
          console.log('image update',content_media);
        });

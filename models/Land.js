@@ -23,6 +23,14 @@ var LandSchema =  new moongoose.Schema({
         type:String,
          default:null
     },
+    image:{
+        type:String,
+         default:null
+    },
+    video:{
+        type:String,
+         default:null
+    },
     content:{
         type:String,
         default:null
