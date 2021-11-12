@@ -117,15 +117,17 @@ const updateLand=async(req,res)=>{
         {
          let media_type=file.mimetype.split("/","2");
         
-          console.log(media_type);
+          console.log('AAAAAAAAAAAAAAA',media_type);
           let imageObj={name:file.filename,type:media_type}
           
             if(media_type.includes('image')){
-             await landServices.editLand({image:filename},id);
+              console.log('ddddd',file.filename);
+             await landServices.editLand({image:file.filename},id);
             }
             else
               {
-                await landServices.editLand({video:filename},id);
+                console.log('eeeee',file.filename);
+                await landServices.editLand({video:file.filename},id);
               }
 
          let content_media=await landServices.updateImages(imageObj,id);
