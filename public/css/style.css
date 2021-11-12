@@ -45019,3 +45019,81 @@ table tbody td a#hash {
 table tbody td{
   max-width: 120px;
 }
+
+.sidebar-right, a.btn-buy-now, .dz-demo-panel{
+  display: none !important;
+}
+
+.document-upload-box {
+    /* min-height: 250px; */
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    max-width: 100%;
+    margin: 20px 0;
+}
+.uploader-img {
+    position: relative;
+    /* max-width: 155px; */
+    width: 100%;
+    background-color: #fff;
+    border-radius: 0;
+    padding: 0px 0px 0px;
+    /*height: 132px;*/
+    border: 1px solid #E9E9E9;
+    margin-bottom: 20px;
+}
+.uploader-img img {
+    width: 100% !important;
+    height: 205px !important;
+    object-fit: contain;
+}
+.uploader-img .painting-main-img{
+    height: 180px !important;
+}
+.uploader-img .remove-img {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    color: red;
+}
+#attribute_section_add_main .artist-img {
+    width: 74%;
+}
+
+
+.uploader-img .remove-img img {
+    width: 26px !important;
+}
+.input-group.verification {
+    border-radius: 0;
+    overflow: hidden;
+}
+.input-group.verification .form-control[readonly] {
+    background-color: #fff;
+    display: none;
+}
+.input-group.verification .input-group-btn {
+    position: relative;
+    font-size: 0;
+    white-space: nowrap;
+    border-radius: 0;
+}
+.input-group.verification .input-group-btn .btn-file1 input[type="file"] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+}
