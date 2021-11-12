@@ -157,10 +157,20 @@ const findOrderByUser=async(user_id)=>{
    try{
 
         //let order=await OrderInfo.find({'user_id':user_id});
-
-      let order=await OrderInfo.find({user_id:new moongoose.Types.ObjectId(user_id)}).sort( { _id: -1 } ); 
+    let orders= await OrderInfo.aggregate([
+    { "$match": {'user_id':new moongoose.Types.ObjectId(user_id) } },  
+    { "$sort": { "_id":-1 } },
+    {"$lookup": {
+    "localField": "land_id",
+    "from": "lands",
+    "foreignField": "_id",
+    "as": "landInfo"
+    } },
+    { "$unwind": "$landInfo" }
+    ]);
+     // let order=await OrderInfo.find({user_id:new moongoose.Types.ObjectId(user_id)}).sort( { _id: -1 } ); 
       
-        return order; 
+        return orders; 
       }catch(e){console.log(e)}  
     }
 module.exports = {
