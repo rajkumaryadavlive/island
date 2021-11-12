@@ -61,7 +61,9 @@ const market=async (req,res)=>{
          var temp = JSON.stringify(key);
          var temp1 = JSON.parse(temp);
          let imageInfos = await landServices.findImagesByID(key._id)
+         let nft=await signNftServices.findByIdVoucher(key._id);
          temp1.imageInfo = imageInfos
+         temp1.nft = nft
          data.push(temp1)
      }
      console.log('data ===========================',data)
