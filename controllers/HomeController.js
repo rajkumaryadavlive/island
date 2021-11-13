@@ -108,10 +108,12 @@ const model=async (req,res)=>{
 const contentDetail=async(req,res)=>{
     let id=req.query.id.trim();
     let lands=await landServices.findLandById(id)
+    let nft=await signNftServices.findByIdVoucher(lands._id);
+
     console.log('get by id land',lands)
     //let details=await paintingServices.getContentDetail(id);
     //let creater=await userServices.checkUserByID(details.created_by);
-    res.render('details',{layout:'layout/front/frontlayout',name:req.session.re_usr_name,land:lands});
+    res.render('details',{layout:'layout/front/frontlayout',name:req.session.re_usr_name,land:lands,nft:nft});
 }
 
 const author=async(req,res)=>{

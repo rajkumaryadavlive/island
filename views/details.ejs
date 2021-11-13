@@ -16,7 +16,7 @@
 									
 								  <%}%>
 								  
-								<%}) %>
+								<%}); %>
 		    				
 		    			</div>
 
@@ -27,7 +27,12 @@
 			    			 <h6>Current price</h6>
 			    			 <h3><img src="/frontassets/images/bnb.png"><%=land.price %> BNB<span></span></h3>
 			    			 <div>
-			    			 	<a class="orange-btn buynow" value="<%=land._id %>" href="javascript::void(0)">Buy Now</a>
+								<% if(nft){%> 
+									 <a class="orange-btn buynow" value="<%=land._id %>" href="javascript::void(0)">Buy Now</a>
+								   <%}else{%>
+										 <a class="orange-btn" value="<%=land._id %>" href="javascript::void(0)">Sold Out</a>
+ 
+									<%	} %>
 			    			 </div>
 			    			 <div>
 			    			 	<!-- <div class="dropdown">
