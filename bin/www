@@ -17,7 +17,6 @@ var port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 
 var options = {
-
   key: fs.readFileSync('/opt/psa/var/modules/letsencrypt/etc/archive/island-metaverse.com/privkey2.pem', 'utf8'),
   
   cert: fs.readFileSync('/opt/psa/var/modules/letsencrypt/etc/archive/island-metaverse.com/cert2.pem', 'utf8'),
