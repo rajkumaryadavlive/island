@@ -20,10 +20,11 @@
 		    		<div class="col-sm-4">
 		    			<div class="right-side-details">
 		    				 <h2 class="text-left"><%=land.name %></h2>
+							 <h4 style="color: #fff;font-size: 18px;margin-bottom:20px;">(<%=nft %> Lands Left)</h4>
 			    			 <h6>Current price</h6>
 			    			 <h3><img src="/frontassets/images/bnb.png"><%=land.price %> BNB<span></span></h3>
 			    			 <div>
-								<% if(nft){%> 
+								<% if(nft>0){%> 
 									 <a class="orange-btn buynow" value="<%=land._id %>" href="javascript::void(0)">Buy Now</a>
 								   <%}else{%>
 										 <a class="orange-btn" value="<%=land._id %>" href="javascript::void(0)">Sold Out</a>

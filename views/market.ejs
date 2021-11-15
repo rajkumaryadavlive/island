@@ -11,8 +11,8 @@ video::-webkit-media-controls, video::-moz-media-controls, video::-o-media-contr
    <div class="container">
        <div class="row align-items-center">
            <div class="col-sm-9 m-auto">
-             <h2 class="blue-heading">Buy Property</h2>
-               <p style="text-align: center;color: #fff;">To connect your phone, please use a Dapp browser</p>
+             <h2 class="blue-heading mb-0">Buy Property</h2>
+               <p style="text-align: center;color: #fff;margin-bottom: 30px;">To connect your phone, please use a Dapp browser</p>
                <div class="row">
                   <%if(datas.length>0){%>
                      <%datas.forEach(function(land){%>
@@ -21,12 +21,12 @@ video::-webkit-media-controls, video::-moz-media-controls, video::-o-media-contr
                            <div class="lands-box">
                             <div class="heading-box">
                                 <h5><%=land.name%> <small>A <%=land.size%> map</small></h5>
-                                <h5><%=land.price%> BNB</h5>
+                                <h5><small>(<%=land.nft%> Lands Left)</small>   <%=land.price%> BNB </h5>
                             </div>
                             <img src="/uploadFile/<%=land.imageInfo.name%>"  height="200" onerror="this.onerror=null;this.src='/frontassets/images/market/apartment.png';">
                             <!-- <img src="/frontassets/images/market/apartment.png" > -->
                             <div class="text-center">
-                                <%if(land.nft){%>
+                                <%if(land.nft>0){%>
                                 <a href="javascript:void(0)" value="<%=land._id%>"  class="buynow orange-btn">Buy Now </a>
                                 <%}else{%>
                                 <a href="javascript:void(0)"  class="orange-btn">Sold Out </a>

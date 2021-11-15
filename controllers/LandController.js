@@ -169,8 +169,8 @@ const landDetail=async(req,res)=>{
   let id=req.query.id.trim();
   let land=await landServices.findLandById(id);
   let images=await landServices.findImagebyId(land._id);
-  let nft=await signNftServices.findByIdVoucher(land._id);
-
+  let nft=await signNftServices.totalVoucher(land._id);//findByIdVoucher(land._id);
+  
   console.log(images)
   console.log(land);
   res.render('details',{layout:'layout/front/frontlayout',nft:nft,name:req.session.re_usr_name,land:land,images:images});

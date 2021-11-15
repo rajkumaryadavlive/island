@@ -19,6 +19,13 @@ const findByIdVoucher=async(id)=>{
            return voucher;
         }catch(e){console.log(e)}
 }
+
+const totalVoucher=async(id)=>{
+    try{
+        let voucher=await SignNftInfo.find({land_id:id,status:0}).count();
+       return voucher;
+    }catch(e){console.log(e)}
+}
 const findAllVoucher=async(id)=>{
     try{
         let voucher=await SignNftInfo.find();
@@ -72,5 +79,6 @@ module.exports={addVoucher,
                findAllVoucher,
                totalNft,
                soldNft,
-               availableNft
+               availableNft,
+               totalVoucher
               }
