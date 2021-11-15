@@ -15,11 +15,22 @@ var http = require('http');
 var port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 
+var options = {
+
+  key: fs.readFileSync('/etc/letsencrypt/live/island-metaverse.com/privkey2.pem', 'utf8'),
+  
+  cert: fs.readFileSync('/etc/letsencrypt/live/island-metaverse.com/cert2.pem', 'utf8'),
+  
+  ca: fs.readFileSync('/etc/letsencrypt/live/island-metaverse.com/chain2.pem', 'utf8')
+      
+  };
+
+
 /**
  * Create HTTP server.
  */
 
-var server = http.createServer(app);
+var server = http.createServer(options,app);
 
 /**
  * Listen on provided port, on all network interfaces.

@@ -6,17 +6,13 @@
     				<div class="col-sm-8">
 		    			<div class="big-img">
 		    				<!-- <img src="/frontassets/images/banner4.jpg"> -->
-							<% images.forEach(function(image,index){%> 
-                                  
-								  <% if(image.type[0]=='video'){%>
+							
 									  
 									<video id="myVideo" width="100%" height="380" controls="false" loop autoplay muted>
-										<source src="/uploadFile/<%=image.name %>" type="video/<%=image.type[1] %>">
+										<source src="/uploadFile/<%=land.video %>" />
 									</video>
 									
-								  <%}%>
-								  
-								<%}); %>
+								 
 		    				
 		    			</div>
 
