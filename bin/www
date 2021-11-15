@@ -18,11 +18,11 @@ app.set('port', port);
 
 var options = {
 
-  key: fs.readFileSync('/etc/letsencrypt/live/island-metaverse.com/privkey2.pem', 'utf8'),
+  key: fs.readFileSync('/opt/psa/var/modules/letsencrypt/etc/archive/island-metaverse.com/privkey2.pem', 'utf8'),
   
-  cert: fs.readFileSync('/etc/letsencrypt/live/island-metaverse.com/cert2.pem', 'utf8'),
+  cert: fs.readFileSync('/opt/psa/var/modules/letsencrypt/etc/archive/island-metaverse.com/cert2.pem', 'utf8'),
   
-  ca: fs.readFileSync('/etc/letsencrypt/live/island-metaverse.com/chain2.pem', 'utf8')
+  ca: fs.readFileSync('/opt/psa/var/modules/letsencrypt/etc/archive/island-metaverse.com/chain2.pem', 'utf8')
       
   };
 
