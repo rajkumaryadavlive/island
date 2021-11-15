@@ -28,7 +28,7 @@ const findLand=async()=>{
          
         let lands=await LandInfo.aggregate([
             { "$match": {'status':'active'} },
-            { "$sort": { "price": 1 } },
+            { "$sort": { "created_at": -1 } },
             { "$limit": 20 }, 
             { "$lookup": {
               "localField": "_id",
