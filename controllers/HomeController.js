@@ -128,8 +128,10 @@ const author=async(req,res)=>{
 const fetchNft=async(req,res)=>{
     let id=req.query.id.trim();
     console.log(id);
+    let lands=await landServices.findLandById(id)
     let nft=await signNftServices.findByIdVoucher(id);
-    res.send(nft);
+    let data={land:lands,nft:nft};
+    res.send(data);
 }
 const addOrder=async(req,res)=>{
     let body=req.body;
