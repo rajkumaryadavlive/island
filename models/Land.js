@@ -13,7 +13,7 @@ var LandSchema =  new moongoose.Schema({
         type:String
     },
     price:{
-        type:String,
+        type:Number,
     },
     quantity:{
         type:String,

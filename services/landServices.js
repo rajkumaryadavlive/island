@@ -28,7 +28,7 @@ const findLand=async()=>{
          
         let lands=await LandInfo.aggregate([
             { "$match": {'status':'active'} },
-            { "$sort": { "_id": -1 } },
+            { "$sort": { "price": 1 } },
             { "$limit": 20 }, 
             { "$lookup": {
               "localField": "_id",
@@ -89,7 +89,8 @@ const addImages=async(LandImage)=>{
  const findAllLand=async()=>{
     try{
        
-        let data=await LandInfo.find();
+        let data=await LandInfo.find().sort({'price':1});
+       // console.log('my land data',data)
         return data;
     }catch(e){ console.log(e); }
  }
