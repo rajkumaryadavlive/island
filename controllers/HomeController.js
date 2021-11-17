@@ -220,7 +220,9 @@ const  transactionHistory=async(req,res)=>{
     for(var key of landDatas){
         var temp = JSON.stringify(key);
         var temp1 = JSON.parse(temp);
-        let imageInfos = await landServices.findImagesByID(key.land_id)
+        let land_id=key.land_id.toString()
+        console.log('land_id',land_id);
+        let imageInfos = await landServices.findLandById(land_id)
         temp1.landInfo = imageInfos
         transaction.push(temp1)
     }
