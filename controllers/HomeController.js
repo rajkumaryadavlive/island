@@ -213,7 +213,10 @@ const addOrder=async(req,res)=>{
 const  transactionHistory=async(req,res)=>{
     let user_id=req.session.re_us_id;
     let address=req.session.wallet_address
-    
+    if(address=="undefined"|| address==null)
+    {
+       res.redirect('/');
+    }
     let landDatas =await orderServices.findOrderByUser(user_id,address);
    
     var transaction=[]

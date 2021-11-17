@@ -153,7 +153,7 @@ const totalEarning=async(user_id)=>{
   let order=await OrderInfo.updateOne({'trans_id':id}, { $set: {nft_hash:hash} });
 }
 const findOrderByUser=async(user_id,address)=>{
-  console.log('user id',user_id);
+  console.log('user id',address);
    try{
         //let order=await OrderInfo.find({'user_id':user_id});
    /* let orders= await OrderInfo.aggregate([
