@@ -212,14 +212,16 @@ const addOrder=async(req,res)=>{
 
 const  transactionHistory=async(req,res)=>{
     let user_id=req.session.re_us_id;
-    let landDatas =await orderServices.findOrderByUser(user_id);
+    let address=req.session.wallet_address
+    
+    let landDatas =await orderServices.findOrderByUser(user_id,address);
    
     var transaction=[]
     for(var key of landDatas){
         var temp = JSON.stringify(key);
         var temp1 = JSON.parse(temp);
         let imageInfos = await landServices.findImagesByID(key.land_id)
-        temp1.imageinfo = imageInfos
+        temp1.landInfo = imageInfos
         transaction.push(temp1)
     }
 

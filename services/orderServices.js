@@ -152,12 +152,11 @@ const totalEarning=async(user_id)=>{
  const updateNftHash=async(id,hash)=>{
   let order=await OrderInfo.updateOne({'trans_id':id}, { $set: {nft_hash:hash} });
 }
-const findOrderByUser=async(user_id)=>{
+const findOrderByUser=async(user_id,address)=>{
   console.log('user id',user_id);
    try{
-
         //let order=await OrderInfo.find({'user_id':user_id});
-    let orders= await OrderInfo.aggregate([
+   /* let orders= await OrderInfo.aggregate([
     { "$match": {'user_id':new moongoose.Types.ObjectId(user_id) } },  
     { "$sort": { "_id":-1 } },
     {"$lookup": {
@@ -167,8 +166,11 @@ const findOrderByUser=async(user_id)=>{
     "as": "landInfo"
     } },
     { "$unwind": "$landInfo" }
-    ]);
-     // let order=await OrderInfo.find({user_id:new moongoose.Types.ObjectId(user_id)}).sort( { _id: -1 } ); 
+    ]);*/
+      
+      let regex = new RegExp(address,'i');
+
+      let orders=await OrderInfo.find({wallet_address:regex}).sort( { _id: -1 } ); 
       
         return orders; 
       }catch(e){console.log(e)}  

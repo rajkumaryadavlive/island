@@ -230,6 +230,8 @@ const loginByWallet=async(req,res)=>{
              req.session.re_usr_email = user.email;
              req.session.is_user_logged_in = true;
              req.session.role=user.user_role;
+             req.session.wallet_address=user.wallet_address;
+
              console.log(req.session);
              res.send(user);
          }else
@@ -258,6 +260,7 @@ const loginByWallet=async(req,res)=>{
               req.session.re_usr_email = user.email;
               req.session.is_user_logged_in = true;
               req.session.role=user.user_role;
+              req.session.wallet_address=user.wallet_address;
               console.log(req.session);
      
               res.send(user);
