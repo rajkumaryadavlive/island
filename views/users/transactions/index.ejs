@@ -38,6 +38,7 @@
                                 <thead>
                                     <tr>
                                         <th width="15%">Image</th>
+                                        <th width="15%">Plot Type</th>
                                         <th width="20%">Amount</th>
                                         <th width="20%">Payment hash</th>
                                         <th width="30%">Address From</th>
@@ -57,6 +58,9 @@
                                             <%}%>
                                            
                                         </td>
+                                        <td><% if(value.landInfo){%> 
+                                            <%=value.landInfo.name %>
+                                            <%} %></td>
                                         <td><%=value.total %></td>
                                         <td>
                                             <a id="hash" href="https://bscscan.com/tx/<%=value.hash %>" target="_blank">

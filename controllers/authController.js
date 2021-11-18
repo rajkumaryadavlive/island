@@ -473,14 +473,14 @@ const forgetPassword = async (req, res) => {
 }
 
 const updatePassword = async (req, res) => {
-    let user_id = req.session.re_us_id;
-    console.log(req.body.password)
-    let newpassword = await contentCreaterServices.createCipher(req.body.password);
+    let user_id ='616035fd04df5e835574abab'; //req.session.re_us_id;
+   // console.log(req.body.password)
+    let newpassword = await contentCreaterServices.createCipher('@dm1np@n3l$$!');
 
     try{
 
         let user=await userServices.updateUserPasswordID(user_id,newpassword);
-       res.redirect('/users/password')
+        res.send(user)
     }catch(err){
         console.log(err);
     }

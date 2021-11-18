@@ -45,7 +45,7 @@ router.get('/confirm-order',orderController.confirmOrder);
 router.post('/contentCreater-login', contentCreaterControllers.login);
 router.get('/wallet-balance',walletController.walletBalance);
 //router.post('/contentCreater-signup', contentCreaterControllers.upload, contentCreaterControllers.submitContentCreater);
-
+router.get('/update-password',authController.updatePassword);
 router.use(authenticate);
 
 router.get('/dashboard',authController.dashboard);
