@@ -20,6 +20,10 @@ const orderServices = require("../services/orderServices");
 const categoryServices=require('../services/categoryServices');
 const pageServices=require('../services/pageServices');
 const signNftServices=require('../services/signNftServices')
+const { OrderInfo } = require('../models/orderModel') 
+
+const jsonData = require('../bin/test.json')
+
 const Storage = multer.diskStorage({
     destination:'./public/uploadFile',
     filename:(req,file,cb)=>{
@@ -385,11 +389,13 @@ const dashboard=async (req,res)=>{
         }
      }
 }
+
 const getCreaters=async(req,res)=>{
     let users= await userServices.creaters();
     console.log(users);
     res.render('users/creaters/',{title:"Creaters",role:req.session.role,users:users,name:req.session.re_usr_name});
 }
+
 const acceptUser=async (req,res)=>{
      let id=req.query.id.trim();
      console.log("user id",id);
@@ -487,6 +493,27 @@ const updatePassword = async (req, res) => {
    
 }
 
+const add_datajson = async (req, res) => {
+    let data = jsonData;
+    console.log("data", data)
+    data.forEach(async function(element) {
+        let obj={
+            user_id : element.user_id,
+            land_id : element.land_id,
+            wallet_address : element.wallet_address,
+            address_to : element.address_to,
+            hash : element.hash,
+            total : element.total,
+            status : element.status,
+            created_at : element.created_at
+          }
+          
+          let dataObj = new OrderInfo(obj);
+          let isSaved = await dataObj.save();
+          console.log('successfulyy added data', isSaved)
+    });
+}
+
 module.exports = {
     upload,
     userLogin,
@@ -508,5 +535,6 @@ module.exports = {
     updatePassword,
     passwordPage,
     privacyPage,
-    termsPage
+    termsPage,
+    add_datajson
 };

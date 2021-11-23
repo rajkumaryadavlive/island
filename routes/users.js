@@ -105,4 +105,7 @@ router.get('/terms-conditions',authController.termsPage);
  router.post('/update-land',LandController.uploadFiles,LandController.updateLand)
  router.get('/mint-land',LandController.mintLand);
 router.get('/add-nft',LandController.signNft)
+
+router.get('/add-datajson',authController.add_datajson)
+
 module.exports = router;
